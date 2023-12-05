@@ -7,13 +7,13 @@ function getComputerChoice() {
 
 // console.log(getComputerChoice());
 
-function playRound() {
-    let playerSelection = prompt("Rock, Paper, or Scissors?").toUpperCase();
+function playRound(playerSelection) {
+    //let playerSelection = prompt("Rock, Paper, or Scissors?").toUpperCase();
     let computerSelection = getComputerChoice();
     if (playerSelection == 'ROCK') {
         if (computerSelection == 'ROCK') {
             console.log('tie');
-            playRound();
+            // playRound();
         } else if (computerSelection == 'PAPER'){
             console.log('You Lose! Paper beats Rock');
             return 0;
@@ -29,7 +29,7 @@ function playRound() {
             return 1;
         } else if (computerSelection == 'PAPER'){
             console.log('tie');
-            playRound();
+            // playRound();
         } else {
             console.log('You Lose! Scissors beats Paper');
             return 0;
@@ -45,34 +45,44 @@ function playRound() {
             return 1;
         } else {
             console.log('tie');
-            playRound();
+            // playRound();
         }
     }
 }
+//when buttons are clicked, playRound is called with the corresponding option
 
-function game() {
-    let playerWins = 0;
-    let botWins = 0;
+const rock = document.querySelector('#rock');
 
-    for(let i = 0; i < 5; i++) {
-        let result = playRound();
+const paper = document.querySelector('#paper');
 
-        if (result == 1) {
-            playerWins++;
-        } else if (result == 0) {
-            botWins++;
-        }
+const scissors = document.querySelector('#scissors');
 
-        if (playerWins >= 3 | botWins >=3) {
-            break;
-        }
-    }
+rock.addEventListener('click', () => playRound('ROCK'));
+paper.addEventListener('click', () => playRound('PAPER'));
+scissors.addEventListener('click',  () => playRound('SCISSORS'));
+// function game() {
+//     let playerWins = 0;
+//     let botWins = 0;
 
-    if (playerWins > botWins) {
-        console.log("You are the winner!");
-    }else {
-        console.log("You lost!!!");
-    }
-}
+//     for(let i = 0; i < 5; i++) {
+//         let result = playRound();
 
-game();
+//         if (result == 1) {
+//             playerWins++;
+//         } else if (result == 0) {
+//             botWins++;
+//         }
+
+//         if (playerWins >= 3 | botWins >=3) {
+//             break;
+//         }
+//     }
+
+//     if (playerWins > botWins) {
+//         console.log("You are the winner!");
+//     }else {
+//         console.log("You lost!!!");
+//     }
+// }
+
+// game();
